@@ -10,6 +10,10 @@
     <!-- Right Nav Section -->
     <ul class="right">
       <% if current_user? %>
+        <li><a href="#">Signout</a></li>
+      <% else %>
+        <li><a href="/user/signin">Sign In</a></li>
+      <% end %>
     </ul>
 
     <!-- Left Nav Section -->

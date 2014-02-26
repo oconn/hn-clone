@@ -3,7 +3,7 @@ get '/user/signup' do
 end
 
 get '/user/signin' do
-  erb :"user_views/sign_in"
+  erb :"user_views/signin"
 end
 
 get '/user/signout' do
@@ -45,7 +45,7 @@ post '/user/new' do
   end
 end
 
-post '/user/sign_in' do
+post '/user/signin' do
   user = User.find_by_email(params[:email])
 
   if user && user.authenticate(params[:password])
