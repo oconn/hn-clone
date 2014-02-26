@@ -4,7 +4,7 @@
 
 <ul>
   <% @posts.each do |post| %>
-    <li><a href="/post/<%= post.id %>"><%= post.title %> (<%= time_created(post) %> ago)</a> :
+    <li><a href="/post/<%= post.id %>"><%= post.title %> (<%= time_created(post) %> ago)</a> <a href= "/comment/new/<%= post.id %>">Comments</a> :
       <a href="/post/edit/<%= post.id %>" class="button">Edit</a> :
       <a href="/post/delete/<%= post.id %>" class="button">Delete</a>
     </li>

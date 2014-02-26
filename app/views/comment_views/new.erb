@@ -1,3 +1,12 @@
 <h1><%= @post.title %></h1>
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <%= comment.content %>
+      (<%= comment.author%>)
+      <%= time_created(comment) %> ago
+    </li>
+  <% end %>
+</ul>
 
 <%= erb :"forms/_new_comment_form" %>

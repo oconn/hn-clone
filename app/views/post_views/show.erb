@@ -3,6 +3,9 @@
 <p><%= @post.text %></p>
 
 <ul>
-
-
+  <% @post.comments.each do |comment| %>
+    <li><%= comment.content %> (<%= comment.author %>)</li>
+  <% end %>
 </ul>
+
+<%= erb :"forms/_new_comment_form" %>
