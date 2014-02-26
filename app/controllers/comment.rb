@@ -28,8 +28,7 @@ post "/comment/new/:post_id" do
   @comment = Comment.create(content: params[:content],
                             post_id: params[:post_id],
                             user_id: current_user.id)
-  redirect to "/post/#{params[:post_id]}" if @post.url.empty?
-  redirect to("/")
+  redirect to("/comment/new/#{params[:post_id]}")
 end
 
 

@@ -1,11 +1,9 @@
 <h1><%= @post.title %></h1>
 <ul>
   <% @post.comments.each do |comment| %>
-    <li>
-      <%= comment.content %>
-      (<%= comment.author%>)
-      <%= time_created(comment) %> ago
-    </li>
+    <li><%= comment.content %></li>
+    <li>(<%= comment.author%>) <%= time_created(comment) %> ago</li>
+    <li><a href="/vote/comment/<%= comment.id %>">^</a> Votes: <%= comment.vote_count %></li>
   <% end %>
 </ul>
 
