@@ -3,3 +3,9 @@
 <% if !current_user? %>
   <a href="/user/signup" class="button">Sign Up!</a>
 <% end %>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li><a href="/post/<%= post.id %>"><%= post.title %></a></li>
+  <% end %>
+</ul>

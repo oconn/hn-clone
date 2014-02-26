@@ -1,6 +1,10 @@
-<form action="/post/edit/<%= @post.id %>" action="POST">
-	<input type="text" name="title" placeholder="Title" value="<%= @post.title %>">
-	<input type="text" name="url" placeholder="url" value="<%= @post.url %>">
-  <textarea name="text" cols="30" rows="10"><%= @post.text %></textarea>
-  <input type="submit" value="Edit" class="button">
-</form>
+<div class="row">
+  <div class="large-6 large-offset-3 column">
+    <form action="/post/edit/<%= @post.id %>" action="POST">
+    	<input type="text" name="title" placeholder="Title" value="<%= @post.title %>">
+    	<input type="text" name="url" placeholder="url" value="<%= @post.url %>">
+      <textarea name="text" cols="30" rows="10"><%= @post.text %></textarea>
+      <input type="submit" value="Edit" class="button">
+    </form>
+  </div>
+</div>

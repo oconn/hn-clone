@@ -1,4 +1,8 @@
-<form action="/comment/new/<%= @post.id %>" action="POST">
-  <textarea name="content" cols="30" rows="10"></textarea>
-  <input type="submit" value="Edit" class="button">
-</form>
+<div class="row">
+  <div class="large-6 large-offset-3 column">
+    <form action="/comment/new/<%= @post.id %>" action="POST">
+      <textarea name="content" cols="30" rows="10"></textarea>
+      <input type="submit" value="Edit" class="button">
+    </form>
+  </div>
+</div>

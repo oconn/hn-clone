@@ -1,2 +1,12 @@
 <h1>User homepage</h1>
-<p>Find in: views/user_views/show.erb</p>
+
+<a href="/post/new" class="button">New Post</a>
+
+<ul>
+  <% @user.posts.each do |post| %>
+    <li><a href="/post/<%= post.id %>"><%= post.title %></a> :
+      <a href="/post/edit/<%= post.id %>" class="button">Edit</a> :
+      <a href="/post/delete/<%= post.id %>" class="button">Delete</a>
+    </li>
+  <% end %>
+</ul>

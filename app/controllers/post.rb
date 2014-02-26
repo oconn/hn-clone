@@ -2,19 +2,23 @@ get '/post/new' do
   erb :"post_views/new"
 end
 
-get '/post/edit' do
+get '/post/delete/:id' do
+  @post = Post.find(params[:id]).destroy
+  redirect to ("/user/#{current_user.id}")
+end
+
+get '/post/edit/:id' do
   @post = Post.find(params[:id])
+  redirect to "/" if current_user.id != @post.user_id
   erb :"post_views/edit"
 end
 
 get '/post/:id' do
-  @post = Post.find(params[:id])
-  erb :"post_views/post"
-end
-
-post '/post/delete/:id' do
-  @post = Post.find(params[:id]).destroy
-  redirect to ("/user/#{params[:user_id]}")
+  @posts = Post.where(id: params[:id])
+  redirect to ('/') if @posts.empty?
+  @post = @posts.first
+  redirect to (@post.url) if !@post.url.empty?
+  erb :"post_views/show"
 end
 
 post '/post/edit/:id' do
@@ -25,11 +29,11 @@ post '/post/edit/:id' do
   redirect to ("/comment/#{params[:id]}")
 end
 
-post "/post/new/:user_id" do
+post "/post/new/" do
   @post = Post.create(title: params[:title],
-                       user_id: params[:user_id],
+                       user_id: current_user.id,
                        url: params[:url],
                        text: params[:text]
                        )
-  redirect to("/post/#{@post.id}")
+  redirect to("/user/#{current_user.id}")
 end
