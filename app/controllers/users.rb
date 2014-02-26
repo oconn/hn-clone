@@ -32,7 +32,7 @@ end
 
 post '/user/new' do
   user = User.new({
-    email: params[:email],
+    user_name: params[:user_name],
     password: params[:password],
     password_confirmation: params[:password_confirmation]
     })
@@ -62,7 +62,7 @@ post '/user/edit' do
 
   if @user && @user.authenticate(params[:current_password])
     @user.update({
-      email: params[:email],
+      user_name: params[:user_name],
       password: params[:password],
       password_confirmation: params[:password_confirmation]
       })
