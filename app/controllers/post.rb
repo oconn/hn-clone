@@ -14,7 +14,7 @@ end
 
 post '/post/delete/:id' do
   @post = Post.find(params[:id]).destroy
-  erb :
+  redirect to ("/user/#{params[:user_id]}")
 end
 
 post '/post/edit/:id' do
