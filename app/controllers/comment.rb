@@ -14,7 +14,7 @@ end
 
 post '/comment/delete/:id' do
   @comment = Comment.find(params[:id]).destroy
-  erb :
+  redirect to "/post/#{@comment.post_id}"
 end
 
 post '/comment/edit/:id' do
