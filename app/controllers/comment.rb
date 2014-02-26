@@ -1,4 +1,4 @@
-get '/comment/new/' do
+get '/comment/new/:post_id' do
   erb :"comment_views/new"
 end
 

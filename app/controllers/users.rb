@@ -24,9 +24,15 @@ get '/user/edit/:id' do
   erb :"user_views/edit"
 end
 
+get '/user/public/:id' do
+
+  erb :"user_views/public"
+end
+
 get '/user/:id' do
   @user = User.find(session[:user_id])
   redirect to("/") if @user.id != params[:id].to_i
+  @posts = @user.posts.order(created_at: :desc)
   erb :"user_views/show"
 end
 

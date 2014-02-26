@@ -6,6 +6,13 @@
 
 <ul>
   <% @posts.each do |post| %>
-    <li><a href="/post/<%= post.id %>"><%= post.title %></a></li>
+    <li><a href="/post/<%= post.id %>"><%= post.title %></a>
+      <% if !post.url.empty? %>
+        (<%= post.url %>)
+      <% end %>
+    </li>
+    <li class="time-created"> by: <%= post.author %> (<%= time_created(post) %> ago)
+      <a href="">Comment</a>
+    </li>
   <% end %>
 </ul>
