@@ -19,6 +19,16 @@ get '/user/delete' do
   redirect to('/')
 end
 
+get 'user/posts' do
+  @posts = current_user.posts
+  erb :"user_views/posts"
+end
+
+get '/user/comments' do
+  @comments = current_user.comments
+  erb :"user_views/comments"
+end
+
 get '/user/edit/:id' do
   redirect to("/") if current_user.id != params[:id].to_i
   erb :"user_views/edit"

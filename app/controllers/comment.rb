@@ -8,11 +8,6 @@ get '/comment/edit/:id' do
   erb :"comment_views/edit"
 end
 
-get '/comment/user' do
-  @comments = current_user.comments
-  erb :"user_views/comments"
-end
-
 get '/comment/:id' do
   @comment = Comment.find(params[:id])
   erb :"comment_views/comment"
