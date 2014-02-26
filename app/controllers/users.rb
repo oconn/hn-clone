@@ -1,14 +1,12 @@
-get '/user/new' do
-
+get '/user/signup' do
   erb :"user_views/new"
 end
 
-get '/user/sign_in' do
+get '/user/signin' do
   erb :"user_views/sign_in"
 end
 
-get '/user/sign_out' do
-  p session
+get '/user/signout' do
   session[:user_id] = nil
   redirect to('/')
 end
@@ -28,14 +26,11 @@ end
 
 get '/user/:id' do
   @user = User.find(session[:user_id])
-  p session[:user_id]
-  p @user.id
   redirect to("/") if @user.id != params[:id].to_i
   erb :"user_views/show"
 end
 
 post '/user/new' do
-
   user = User.new({
     email: params[:email],
     password: params[:password],
