@@ -4,8 +4,8 @@
   <a href="/user/signup" class="button">Sign Up!</a>
 <% end %>
 
-<ul>
-  <% @posts.each do |post| %>
+<% @posts.each_with_index do |post| %>
+  <ul>
     <li>
       <a href="/vote/post/<%= post.id %>"> ^ </a>
       <a href="/post/<%= post.id %>"><%= post.title %></a>
@@ -16,7 +16,10 @@
     <li class="time-created">
       (points <%= post.vote_count %>)
       by: <%= post.author %> (<%= time_created(post) %> ago)
-      <a href="/comment/new/<%= post.id %>">Comment</a>
+      <a class="comment-link" href="/comment/new/<%= post.id %>">Comment</a>
     </li>
-  <% end %>
-</ul>
+  </ul>
+  <div></div>
+<% end %>
+
+<script type="text/javascript" src="/js/home.js"></script>

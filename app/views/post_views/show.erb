@@ -2,10 +2,12 @@
 
 <p><%= @post.text %></p>
 
-<ul>
+<ul class="post-comments">
   <% @post.comments.each do |comment| %>
     <li><%= comment.content %> (<%= comment.author %>)</li>
   <% end %>
 </ul>
 
 <%= erb :"forms/_new_comment_form" %>
+
+<script type="text/javascript" src="/js/post.js"></script>

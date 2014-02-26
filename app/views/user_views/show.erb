@@ -1,15 +1,19 @@
 <h1>User homepage</h1>
 
 <a href="/post/new" class="button">New Post</a>
-
-<ul>
+<div class="row">
   <% @posts.each do |post| %>
-    <li><a href="/post/<%= post.id %>"><%= post.title %> (<%= time_created(post) %> ago)</a> <a href= "/comment/new/<%= post.id %>">Comments</a> :
-      <a href="/post/edit/<%= post.id %>" class="button">Edit</a> :
-      <a href="/post/delete/<%= post.id %>" class="button">Delete</a>
-    </li>
+    <div class="large-4 columns">
+      <ul>
+        <li class="post-title"><a href="/post/<%= post.id %>"><%= post.title %></a></li>
+        <li class="inline-li">(<%= time_created(post) %> ago)</li>
+        <li class="inline-li"><a href= "/comment/new/<%= post.id %>">Comments</a></li>
+        <li><a href="/post/edit/<%= post.id %>" class="button">Edit</a></li>
+        <li><a href="/post/delete/<%= post.id %>" class="button">Delete</a></li>
+      </ul>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <p><a href="/user/comments">Comments</a></p>
 

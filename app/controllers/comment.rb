@@ -1,6 +1,10 @@
 get '/comment/new/:post_id' do
   @post = Post.find(params[:post_id])
-  erb :"comment_views/new"
+  if request.xhr?
+    erb :"forms/_new_comment_form", layout: false
+  else
+    erb :"comment_views/new"
+  end
 end
 
 get '/comment/edit/:id' do
@@ -28,7 +32,11 @@ post "/comment/new/:post_id" do
   @comment = Comment.create(content: params[:content],
                             post_id: params[:post_id],
                             user_id: current_user.id)
-  redirect to("/comment/new/#{params[:post_id]}")
+  if request.xhr?
+    {content: @comment.content, author: @comment.author}.to_json
+  else
+    redirect to("/comment/new/#{params[:post_id]}")
+  end
 end
 
 
