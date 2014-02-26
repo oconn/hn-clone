@@ -1,4 +1,5 @@
 get '/user/signup' do
+  redirect to('/') if current_user?
   erb :"user_views/new"
 end
 
@@ -12,15 +13,14 @@ get '/user/signout' do
 end
 
 get '/user/delete' do
-  @user = User.find(session[:user_id])
+  user = User.find(session[:user_id])
   session.clear
-  @user.destroy
+  user.destroy
   redirect to('/')
 end
 
 get '/user/edit/:id' do
-  @user = User.find(session[:user_id])
-  redirect to("/") if @user.id != params[:id].to_i
+  redirect to("/") if current_user.id != params[:id].to_i
   erb :"user_views/edit"
 end
 
