@@ -12,7 +12,7 @@
       <% end %>
     </li>
     <li class="time-created"> by: <%= post.author %> (<%= time_created(post) %> ago)
-      <a href="">Comment</a>
+      <a href="/comment/new/<%= post.id %>">Comment</a>
     </li>
   <% end %>
 </ul>

@@ -1,10 +1,16 @@
 get '/comment/new/:post_id' do
+  @post = Post.find(params[:post_id])
   erb :"comment_views/new"
 end
 
 get '/comment/edit/:id' do
   @comment = Comment.find(params[:id])
   erb :"comment_views/edit"
+end
+
+get '/comment/user' do
+  @comments = current_user.comments
+  erb :"user_views/comments"
 end
 
 get '/comment/:id' do
@@ -24,7 +30,7 @@ end
 
 post "/comment/new/:post_id" do
   @comment = Comment.create(content: params[:content], post_id: params[:post_id])
-  redirect to("/comment/#{@comment.id}")
+  redirect to("/")
 end
 
 

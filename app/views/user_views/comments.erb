@@ -1,0 +1,6 @@
+<h1>Comments: </h1>
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %> <a href="/post/<%= comment.post_id %>">Go to post</a></li>
+  <% end %>
+</ul>
